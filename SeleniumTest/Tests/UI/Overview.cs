@@ -1,20 +1,21 @@
 ﻿using NUnit.Framework;
+using SeleniumTest.Pages;
 using System;
 
 namespace SeleniumTest.Tests.UI
 {
-    class OverviewPage : AbstractTest
+    class Overview : AbstractTest
     {
-        Pages.OverviewPage overviewPage;
+        OverviewPage overviewPage;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
             BrowserSetup();
 
-            var loginPage = new Pages.LoginPage(driver);
+            var loginPage = new LoginPage(driver);
             loginPage.SendLogin(username, password);
-            overviewPage = new Pages.OverviewPage(driver);
+            overviewPage = new OverviewPage(driver);
         }
 
         [SetUp]

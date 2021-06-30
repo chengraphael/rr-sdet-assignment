@@ -62,9 +62,9 @@
     <Compile Include="Pages\MapEditorPage.cs" />
     <Compile Include="Pages\OverviewPage.cs" />
     <Compile Include="Tests\UI\AbstractTest.cs" />
-    <Compile Include="Tests\UI\OverviewPage.cs" />
-    <Compile Include="Tests\UI\LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\UI\Login.cs" />
+    <Compile Include="Tests\UI\Overview.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
