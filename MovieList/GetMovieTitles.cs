@@ -31,7 +31,7 @@ namespace MovieList
         static void Main(string[] args)
         {
             const string searchString = "Harry Potter";
-            RunAsync(searchString).GetAwaiter().GetResult();
+            GetImdbIds(searchString).GetAwaiter().GetResult();
         }
 
         static async Task<SearchResults> GetSearchResultsAsync(string searchTerm, int page = 1)
@@ -46,7 +46,7 @@ namespace MovieList
             return results;
         }
 
-        static async Task RunAsync(string searchString)
+        static async Task GetImdbIds(string searchString)
         {
             client.BaseAddress = new Uri("http://www.omdbapi.com/");
             client.DefaultRequestHeaders.Accept.Clear();
@@ -60,13 +60,13 @@ namespace MovieList
                 var results = await GetSearchResultsAsync(searchString, 1);
                 var totalResults = results.totalResults;
 
-                searchResults.AddRange(results.Search.Select(x => x.Title));
+                searchResults.AddRange(results.Search.Select(x => x.imdbID));
 
                 var totalPages = (totalResults / 10) + 1;
                 for (int i = 2; i <= totalPages; i++)
                 {
                     results = await GetSearchResultsAsync(searchString, i);
-                    searchResults.AddRange(results.Search.Select(x => x.Title));
+                    searchResults.AddRange(results.Search.Select(x => x.imdbID));
                 }
             }
             catch (Exception e)
